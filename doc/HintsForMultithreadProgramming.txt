@@ -1,0 +1,15 @@
+Collected Hints and Tips
+
+This is really just a collection of the various important parts of the rest of the article. An executive summary, if you like.
+
+    Access all shared data from within locks, using the same lock for each access of the same collection of variables.
+    Make sure you take out locks in a fixed order - if in one flow of execution you acquire lock A and then lock B (without first releasing A), there must be no flow of execution where you acquire lock B and then lock A, otherwise you risk deadlock.
+    Lock on references which have no purpose other than locking. Unless they are to be deliberately shared for the purposes of clients synchronizing themselves, keep these locks private. They should also be read-only.
+    Perform as small an amount of work as possible within a lock - in particular, don't use Control.Invoke within a lock that the UI thread will require.
+    Where possible, call Monitor.Wait when have only acquired the lock you're waiting on. If you absolutely need to have another lock acquired at the same time, make sure that lock isn't required by the code which will pulse the monitor.
+    Don't call event handlers from within a lock, but don't rely on the event delegate remaining non-null after a single call: copy the delegate reference within the lock, and invoke it outside the lock.
+    Never perform long-running operations on a UI thread.
+    Never access a control's properties or methods (other than Invoke, BeginInvoke, EndInvoke, CreateGraphics or InvokeRequired) other than on its UI thread.
+    Long-running operations should use newly created threads; short-running operations can take advantage of the thread pool.
+    Apart from Control.BeginInvoke, asynchronous BeginXXX method calls should always make sure there is a matching EndXXX call.
+    When passing an EventHandler delegate to Control.Invoke (or Control.BeginInvoke), any parameters you specify are ignored - the sender is always set to the control it is executed for, and the EventArgs is always set to EventArgs.Empty.
