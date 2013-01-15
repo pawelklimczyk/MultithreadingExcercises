@@ -12,8 +12,8 @@ namespace ExercisesRunner
             //Ex3_DeadLocks_and_Pulses.Run();
             //Ex4_WaitHandles_Auto_ManualResetEvent.Run();
             //Ex5_Mutex.Run();
-            Ex6_Interlocked.Run();
-
+            //Ex6_Interlocked.Run();
+            Ex7_LockException.Run();
             Console.WriteLine("Done. Press any key to continue....");
             Console.ReadKey();
         }

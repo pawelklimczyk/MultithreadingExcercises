@@ -15,12 +15,12 @@ namespace ExercisesRunner.Excercises
         {
             public void Execute()
             {
-                ManualResetEvent[] events = new ManualResetEvent[10];
+                WaitHandle[] events = new ManualResetEvent[10];
 
                 for (int i = 0; i < events.Length; i++)
                 {
                     events[i] = new ManualResetEvent(false);
-                    Runner r = new Runner(events[i], i);
+                    Runner r = new Runner((ManualResetEvent) events[i], i);
                     new Thread(new ThreadStart(r.Run)).Start();
                 }
 

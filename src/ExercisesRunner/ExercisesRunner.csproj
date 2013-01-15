@@ -49,6 +49,7 @@
     <Compile Include="Excercises\Ex4_WaitHandles_Auto_ManualResetEvent.cs" />
     <Compile Include="Excercises\Ex5_Mutex.cs" />
     <Compile Include="Excercises\Ex6_Interlocked.cs" />
+    <Compile Include="Excercises\Ex7_LockException.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
